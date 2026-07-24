@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>LEBox Minecraft server</title>
+  <meta name="description" content="LEBox, a small Minecraft Java server. IP: LEBox.aternos.me" />
+  <link rel="preconnect" href="https://api.mcsrvstat.us" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- ===================== HERO ===================== -->
+  <header class="hero" id="top">
+    <!-- the beacon beam + fog live here, drawn in CSS -->
+    <div class="beam" aria-hidden="true"></div>
+    <div class="fog fog-a" aria-hidden="true"></div>
+    <div class="fog fog-b" aria-hidden="true"></div>
+
+    <nav class="nav">
+      <span class="nav-mark">LEBox</span>
+      <a class="nav-link" href="#gallery">the world</a>
+      <a class="nav-link" href="#join">how to join</a>
+    </nav>
+
+    <div class="hero-inner">
+      <p class="eyebrow">minecraft &middot; java edition</p>
+      <h1 class="logo">LEBox</h1>
+      <!-- EDIT ME: this tagline is the one bit of "voice", make it yours -->
+      <p class="tagline">just a free box server. the ip's right there if you wanna hop on.</p>
+
+      <div class="ip">
+        <button class="ip-copy" id="copyBtn" type="button" aria-label="Copy server address">
+          <span class="ip-addr" id="ipAddr">LEBox.aternos.me</span>
+          <span class="ip-action" id="copyLabel">copy</span>
+        </button>
+        <div class="status" id="status" data-state="loading">
+          <span class="dot"></span><span class="status-text">checking&hellip;</span>
+        </div>
+      </div>
+
+      <p class="ip-note">runs free on aternos, so it sleeps when nobody's on. if it's offline it just needs someone to boot it up.</p>
+    </div>
+
+    <a class="scroll-cue" href="#gallery" aria-label="Scroll down">&#8595;</a>
+  </header>
+
+  <main>
+    <!-- ===================== GALLERY ===================== -->
+    <section class="gallery" id="gallery">
+      <div class="section-head reveal">
+        <h2>the world</h2>
+        <p>actual shots from the server. no touch-ups.</p>
+      </div>
+
+      <div class="grid">
+        <figure class="shot wide reveal" data-img="beacon.png">
+          <img src="images/beacon.png" alt="A beacon beam rising into the night sky over the world" loading="lazy" />
+        </figure>
+
+        <figure class="shot reveal" data-img="hall.png">
+          <img src="images/hall.png" alt="Inside a large stone hall with patterned pillars" loading="lazy" />
+        </figure>
+
+        <figure class="shot wide reveal" data-img="spawn-aerial.png">
+          <img src="images/spawn-aerial.png" alt="Aerial view of the sandstone spawn build" loading="lazy" />
+        </figure>
+
+        <figure class="shot reveal" data-img="nether-camp.png">
+          <img src="images/nether-camp.png" alt="A small camp built in the nether" loading="lazy" />
+        </figure>
+
+        <figure class="shot reveal" data-img="night-siege.png">
+          <img src="images/night-siege.png" alt="Zombies gathered by a brick wall at night" loading="lazy" />
+        </figure>
+
+        <figure class="shot reveal" data-img="treeline-day.png">
+          <img src="images/treeline-day.png" alt="Bare dark trees on pale ground under a bright sun" loading="lazy" />
+        </figure>
+
+        <figure class="shot wide reveal" data-img="treeline-night.png">
+          <img src="images/treeline-night.png" alt="Dead trees in fog at night" loading="lazy" />
+        </figure>
+      </div>
+    </section>
+
+    <!-- ===================== JOIN ===================== -->
+    <section class="join" id="join">
+      <div class="join-inner reveal">
+        <h2>get on</h2>
+        <p class="join-sub">java edition. paste the address in and you're in.</p>
+
+        <div class="join-ip">
+          <button class="ip-copy small" id="copyBtn2" type="button" aria-label="Copy server address">
+            <span class="ip-addr">LEBox.aternos.me</span>
+            <span class="ip-action" id="copyLabel2">copy</span>
+          </button>
+          <!-- EDIT ME: got a discord? drop the link here.
+          <a class="pill-link" href="https://discord.gg/xxxx">discord</a>
+          -->
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <span>LEBox &middot; <span id="year"></span></span>
+    <span class="foot-dim">not affiliated with Mojang or Microsoft &middot; runs on aternos</span>
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite">copied</div>
+
+  <script src="app.js"></script>
+</body>
+</html>
