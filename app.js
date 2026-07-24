@@ -92,39 +92,4 @@
   var y = document.getElementById("year");
   if (y) y.textContent = new Date().getFullYear();
 
-  /* ---- live status (real data from the public mcsrvstat.us API) ----
-     Honest by design: shows "online / asleep / status unavailable".
-     Never invents a player count. If the API can't be reached, it says so. */
-  var statusEl = document.getElementById("status");
-  function setStatus(state, text) {
-    if (!statusEl) return;
-    statusEl.setAttribute("data-state", state);
-    var t = statusEl.querySelector(".status-text");
-    if (t) t.textContent = text;
-  }
-
-  function checkStatus() {
-    if (!statusEl || !("fetch" in window)) { setStatus("unknown", "status unavailable"); return; }
-    var ctrl = new AbortController();
-    var to = setTimeout(function () { ctrl.abort(); }, 10000);
-    fetch("https://api.mcsrvstat.us/3/" + IP, { signal: ctrl.signal, cache: "no-store" })
-      .then(function (r) { return r.ok ? r.json() : Promise.reject(); })
-      .then(function (d) {
-        clearTimeout(to);
-        if (d && d.online) {
-          var n = d.players && typeof d.players.online === "number" ? d.players.online : null;
-          if (n === null)      setStatus("online", "online");
-          else if (n === 0)    setStatus("online", "online · empty");
-          else if (n === 1)    setStatus("online", "1 playing");
-          else                 setStatus("online", n + " playing");
-        } else {
-          setStatus("offline", "asleep, needs a wake-up");
-        }
-      })
-      .catch(function () {
-        clearTimeout(to);
-        setStatus("unknown", "status unavailable");
-      });
-  }
-  checkStatus();
 })();
